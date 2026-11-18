@@ -1,0 +1,13 @@
+Step req, prop, aero, point
+Decision ok
+Flows(req, prop)
+Flows(prop, aero)
+Flows(aero, point)
+Flows(point, ok)
+LoopsBack(ok, prop)
+Highlighted(prop)
+Label req "Requirements"
+Label prop "Propulsion model"
+Label aero "Drag polar"
+Label point "Design point"
+Label ok "Converged?"

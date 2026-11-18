@@ -1,0 +1,13 @@
+Step req, size, synth, analyze
+Decision ok
+Flows(req, size)
+Flows(size, synth)
+Flows(synth, analyze)
+Flows(analyze, ok)
+LoopsBack(ok, size)
+Highlighted(size)
+Label req "Requirements"
+Label size "Sizing"
+Label synth "Synthesis"
+Label analyze "Analysis"
+Label ok "Converged?"

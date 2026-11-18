@@ -1,0 +1,924 @@
+[
+  {
+    "name": "Aerodynamics",
+    "children": [
+      {
+        "name": "Fundamentals",
+        "children": [
+          {
+            "name": "Fluid properties"
+          },
+          {
+            "name": "Governing equations"
+          },
+          {
+            "name": "Standard atmosphere"
+          }
+        ]
+      },
+      {
+        "name": "Incompressible",
+        "children": [
+          {
+            "name": "Potential flow"
+          },
+          {
+            "name": "Airfoil theory"
+          },
+          {
+            "name": "Finite wings"
+          },
+          {
+            "name": "High-lift"
+          }
+        ]
+      },
+      {
+        "name": "Compressible",
+        "children": [
+          {
+            "name": "Isentropic flow"
+          },
+          {
+            "name": "Normal shocks"
+          },
+          {
+            "name": "Oblique shocks"
+          },
+          {
+            "name": "Expansion fans"
+          },
+          {
+            "name": "Nozzles"
+          }
+        ]
+      },
+      {
+        "name": "Viscous",
+        "children": [
+          {
+            "name": "Boundary layers"
+          },
+          {
+            "name": "Transition"
+          },
+          {
+            "name": "Separation"
+          },
+          {
+            "name": "Drag buildup"
+          }
+        ]
+      },
+      {
+        "name": "High-Speed",
+        "children": [
+          {
+            "name": "Transonic"
+          },
+          {
+            "name": "Supersonic"
+          },
+          {
+            "name": "Hypersonic"
+          }
+        ]
+      },
+      {
+        "name": "Computational & Experimental",
+        "children": [
+          {
+            "name": "CFD"
+          },
+          {
+            "name": "Wind tunnel"
+          },
+          {
+            "name": "Icing"
+          },
+          {
+            "name": "Aeroacoustics"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Propulsion",
+    "children": [
+      {
+        "name": "Fundamentals",
+        "children": [
+          {
+            "name": "Thermo cycles"
+          },
+          {
+            "name": "Thrust equations"
+          },
+          {
+            "name": "Efficiencies"
+          }
+        ]
+      },
+      {
+        "name": "Air-Breathing",
+        "children": [
+          {
+            "name": "Inlets"
+          },
+          {
+            "name": "Compressors"
+          },
+          {
+            "name": "Combustors"
+          },
+          {
+            "name": "Turbines"
+          }
+        ]
+      },
+      {
+        "name": "Rockets",
+        "children": [
+          {
+            "name": "Nozzles"
+          },
+          {
+            "name": "Propellants"
+          },
+          {
+            "name": "Performance"
+          }
+        ]
+      },
+      {
+        "name": "Electric",
+        "children": [
+          {
+            "name": "Motors"
+          },
+          {
+            "name": "Inverters"
+          },
+          {
+            "name": "Batteries"
+          },
+          {
+            "name": "Thermal management"
+          }
+        ]
+      },
+      {
+        "name": "Propellers",
+        "children": [
+          {
+            "name": "Momentum theory"
+          },
+          {
+            "name": "Blade element"
+          },
+          {
+            "name": "Performance"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Structures & Materials",
+    "children": [
+      {
+        "name": "Fundamentals",
+        "children": [
+          {
+            "name": "Statics"
+          },
+          {
+            "name": "Mechanics of materials"
+          },
+          {
+            "name": "Elasticity"
+          },
+          {
+            "name": "Energy methods"
+          }
+        ]
+      },
+      {
+        "name": "Loads",
+        "children": [
+          {
+            "name": "Flight loads"
+          },
+          {
+            "name": "Ground loads"
+          },
+          {
+            "name": "Gust loads"
+          },
+          {
+            "name": "Pressurization"
+          },
+          {
+            "name": "Load envelopes"
+          }
+        ]
+      },
+      {
+        "name": "Structural Analysis",
+        "children": [
+          {
+            "name": "Beams"
+          },
+          {
+            "name": "Plates"
+          },
+          {
+            "name": "Shells"
+          },
+          {
+            "name": "Semi-monocoque"
+          },
+          {
+            "name": "Buckling"
+          },
+          {
+            "name": "Stress concentrations"
+          }
+        ]
+      },
+      {
+        "name": "Materials",
+        "children": [
+          {
+            "name": "Metals"
+          },
+          {
+            "name": "Composites"
+          },
+          {
+            "name": "Laminate theory"
+          },
+          {
+            "name": "Material allowables"
+          }
+        ]
+      },
+      {
+        "name": "Joints & Fittings",
+        "children": [
+          {
+            "name": "Mechanical fasteners"
+          },
+          {
+            "name": "Bonded joints"
+          },
+          {
+            "name": "Welded joints"
+          },
+          {
+            "name": "Lugs"
+          }
+        ]
+      },
+      {
+        "name": "Durability & Damage Tolerance",
+        "children": [
+          {
+            "name": "Fatigue"
+          },
+          {
+            "name": "Fracture mechanics"
+          },
+          {
+            "name": "Corrosion"
+          },
+          {
+            "name": "Environmental effects"
+          }
+        ]
+      },
+      {
+        "name": "Computational Methods",
+        "children": [
+          {
+            "name": "FEA fundamentals"
+          },
+          {
+            "name": "Modeling practice"
+          },
+          {
+            "name": "Test correlation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Flight Mechanics & Controls",
+    "children": [
+      {
+        "name": "Performance",
+        "children": [
+          {
+            "name": "Climb/glide"
+          },
+          {
+            "name": "Range/endurance"
+          },
+          {
+            "name": "Takeoff/landing"
+          }
+        ]
+      },
+      {
+        "name": "Stability",
+        "children": [
+          {
+            "name": "Static"
+          },
+          {
+            "name": "Dynamic modes"
+          },
+          {
+            "name": "Derivatives"
+          }
+        ]
+      },
+      {
+        "name": "Dynamics",
+        "children": [
+          {
+            "name": "Frames"
+          },
+          {
+            "name": "Equations of motion"
+          },
+          {
+            "name": "Linearization"
+          }
+        ]
+      },
+      {
+        "name": "Control",
+        "children": [
+          {
+            "name": "Classical"
+          },
+          {
+            "name": "State-space"
+          },
+          {
+            "name": "Autopilot design"
+          }
+        ]
+      },
+      {
+        "name": "Flight Test",
+        "children": [
+          {
+            "name": "Data reduction"
+          },
+          {
+            "name": "System ID"
+          },
+          {
+            "name": "Handling qualities"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Aircraft Design & Systems",
+    "children": [
+      {
+        "name": "Conceptual",
+        "children": [
+          {
+            "name": "Requirements"
+          },
+          {
+            "name": "Sizing"
+          },
+          {
+            "name": "Weights/CG"
+          },
+          {
+            "name": "Trade studies"
+          }
+        ]
+      },
+      {
+        "name": "Configuration",
+        "children": [
+          {
+            "name": "Wing"
+          },
+          {
+            "name": "Tail"
+          },
+          {
+            "name": "Fuselage"
+          },
+          {
+            "name": "Landing gear"
+          }
+        ]
+      },
+      {
+        "name": "Subsystems",
+        "children": [
+          {
+            "name": "Flight controls"
+          },
+          {
+            "name": "Hydraulics"
+          },
+          {
+            "name": "Electrical"
+          },
+          {
+            "name": "Environmental"
+          }
+        ]
+      },
+      {
+        "name": "Systems Engineering",
+        "children": [
+          {
+            "name": "MBSE"
+          },
+          {
+            "name": "Requirements flow-down"
+          },
+          {
+            "name": "Interfaces"
+          },
+          {
+            "name": "V&V"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Manufacturing & Test",
+    "children": [
+      {
+        "name": "Processes",
+        "children": [
+          {
+            "name": "Machining"
+          },
+          {
+            "name": "Sheet metal"
+          },
+          {
+            "name": "Composites"
+          },
+          {
+            "name": "Additive"
+          },
+          {
+            "name": "Assembly"
+          }
+        ]
+      },
+      {
+        "name": "Quality",
+        "children": [
+          {
+            "name": "GD&T"
+          },
+          {
+            "name": "Inspection"
+          },
+          {
+            "name": "Nonconformance dispositions"
+          }
+        ]
+      },
+      {
+        "name": "Structural Test",
+        "children": [
+          {
+            "name": "Planning"
+          },
+          {
+            "name": "Fixtures/load introduction"
+          },
+          {
+            "name": "Instrumentation"
+          },
+          {
+            "name": "Data reduction"
+          },
+          {
+            "name": "Correlation"
+          }
+        ]
+      },
+      {
+        "name": "Failure Investigation",
+        "children": [
+          {
+            "name": "Root cause"
+          },
+          {
+            "name": "Fractography"
+          },
+          {
+            "name": "Reporting"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Regulations & Standards",
+    "children": [
+      {
+        "name": "US",
+        "children": [
+          {
+            "name": "FAR parts"
+          },
+          {
+            "name": "Advisory circulars"
+          },
+          {
+            "name": "Special conditions"
+          }
+        ]
+      },
+      {
+        "name": "International",
+        "children": [
+          {
+            "name": "EASA CS"
+          }
+        ]
+      },
+      {
+        "name": "Design Standards",
+        "children": [
+          {
+            "name": "CMH-17"
+          },
+          {
+            "name": "MIL-HDBK"
+          },
+          {
+            "name": "ASTM"
+          }
+        ]
+      },
+      {
+        "name": "Compliance",
+        "children": [
+          {
+            "name": "Means of compliance"
+          },
+          {
+            "name": "Certification plans"
+          },
+          {
+            "name": "Reports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Reference & Tools",
+    "children": [
+      {
+        "name": "Data",
+        "children": [
+          {
+            "name": "Units"
+          },
+          {
+            "name": "Material properties"
+          },
+          {
+            "name": "Atmosphere"
+          },
+          {
+            "name": "Gas tables"
+          }
+        ]
+      },
+      {
+        "name": "Equation Sheets",
+        "children": [
+          {
+            "name": "By discipline"
+          }
+        ]
+      },
+      {
+        "name": "Software",
+        "children": [
+          {
+            "name": "CATIA"
+          },
+          {
+            "name": "ABAQUS"
+          },
+          {
+            "name": "PowerFLOW"
+          },
+          {
+            "name": "Python/MATLAB"
+          }
+        ]
+      },
+      {
+        "name": "Templates",
+        "children": [
+          {
+            "name": "Excel"
+          },
+          {
+            "name": "Report formats"
+          },
+          {
+            "name": "Scripts"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Aeroelasticity & Vibration",
+    "children": [
+      {
+        "name": "Vibration",
+        "children": [
+          {
+            "name": "SDOF"
+          },
+          {
+            "name": "MDOF"
+          },
+          {
+            "name": "Damping"
+          }
+        ]
+      },
+      {
+        "name": "Modal",
+        "children": [
+          {
+            "name": "Analysis"
+          },
+          {
+            "name": "Ground vibration test"
+          }
+        ]
+      },
+      {
+        "name": "Aeroelasticity",
+        "children": [
+          {
+            "name": "Divergence"
+          },
+          {
+            "name": "Control reversal"
+          },
+          {
+            "name": "Flutter"
+          }
+        ]
+      },
+      {
+        "name": "Dynamic Loads",
+        "children": [
+          {
+            "name": "Gust"
+          },
+          {
+            "name": "Buffet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rotorcraft & eVTOL",
+    "children": [
+      {
+        "name": "Rotor Aero",
+        "children": [
+          {
+            "name": "Momentum"
+          },
+          {
+            "name": "Blade element"
+          },
+          {
+            "name": "Hover"
+          },
+          {
+            "name": "Forward flight"
+          }
+        ]
+      },
+      {
+        "name": "Flight",
+        "children": [
+          {
+            "name": "Transition"
+          },
+          {
+            "name": "Stability"
+          },
+          {
+            "name": "Control"
+          }
+        ]
+      },
+      {
+        "name": "Architectures",
+        "children": [
+          {
+            "name": "Lift+cruise"
+          },
+          {
+            "name": "Tilt"
+          },
+          {
+            "name": "Distributed propulsion"
+          }
+        ]
+      },
+      {
+        "name": "Noise"
+      }
+    ]
+  },
+  {
+    "name": "Space & Orbital",
+    "children": [
+      {
+        "name": "Orbital Mechanics",
+        "children": [
+          {
+            "name": "Two-body"
+          },
+          {
+            "name": "Transfers"
+          },
+          {
+            "name": "Perturbations"
+          }
+        ]
+      },
+      {
+        "name": "Spacecraft",
+        "children": [
+          {
+            "name": "Attitude dynamics"
+          },
+          {
+            "name": "Structures"
+          },
+          {
+            "name": "Thermal"
+          }
+        ]
+      },
+      {
+        "name": "Launch & Entry",
+        "children": [
+          {
+            "name": "Launch loads"
+          },
+          {
+            "name": "Re-entry heating"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Safety & Reliability",
+    "children": [
+      {
+        "name": "Methods",
+        "children": [
+          {
+            "name": "FHA"
+          },
+          {
+            "name": "FMEA"
+          },
+          {
+            "name": "Fault trees"
+          }
+        ]
+      },
+      {
+        "name": "Reliability",
+        "children": [
+          {
+            "name": "Failure rates"
+          },
+          {
+            "name": "Redundancy"
+          }
+        ]
+      },
+      {
+        "name": "Human Factors"
+      },
+      {
+        "name": "Case Studies"
+      }
+    ]
+  },
+  {
+    "name": "Operations & Maintenance",
+    "children": [
+      {
+        "name": "Inspection",
+        "children": [
+          {
+            "name": "NDT methods"
+          },
+          {
+            "name": "Schedules"
+          }
+        ]
+      },
+      {
+        "name": "Repair",
+        "children": [
+          {
+            "name": "Repair design"
+          },
+          {
+            "name": "Structural repair manuals"
+          }
+        ]
+      },
+      {
+        "name": "Airworthiness"
+      },
+      {
+        "name": "Airspace",
+        "children": [
+          {
+            "name": "ATC"
+          },
+          {
+            "name": "Airports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Career & Projects",
+    "children": [
+      {
+        "name": "Work",
+        "children": [
+          {
+            "name": "Archer"
+          },
+          {
+            "name": "NIAR"
+          }
+        ]
+      },
+      {
+        "name": "Publications"
+      },
+      {
+        "name": "Teams",
+        "children": [
+          {
+            "name": "DBF"
+          },
+          {
+            "name": "Design course"
+          }
+        ]
+      },
+      {
+        "name": "Career Material",
+        "children": [
+          {
+            "name": "Resume"
+          },
+          {
+            "name": "Interview prep"
+          }
+        ]
+      }
+    ]
+  }
+]

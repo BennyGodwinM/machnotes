@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+  --color-green-50: #EFFDF5;
+  --color-green-100: #D9FBE8;
+  --color-green-200: #B3F5D1;
+  --color-green-300: #75EDAE;
+  --color-green-400: #00DC82;
+  --color-green-500: #00C16A;
+  --color-green-600: #00A155;
+  --color-green-700: #007F45;
+  --color-green-800: #016538;
+  --color-green-900: #0A5331;
+  --color-green-950: #052E16;
+}
+
+/* Nuxt UI's default dark theme uses neutral-900 (a dark slate/navy), not
+   black. Override the background tokens for a true black dark mode while
+   keeping text/border tokens as-is for contrast. */
+.dark {
+  --ui-bg: #000000;
+  --ui-bg-muted: #0a0a0a;
+  --ui-bg-elevated: #121212;
+  --ui-bg-accented: #1f1f1f;
+}
+
+/* Typography shell for Typst's compiled-HTML article output. Typst emits
+   plain semantic tags with no classes/styles of its own (see the writer
+   app's compile pipeline), so all presentation — including dark mode —
+   lives here rather than fighting inline styles from the compiler. */
+.typst-article {
+  color: var(--ui-text);
+  line-height: 1.75;
+}
+.typst-article h1,
+.typst-article h2,
+.typst-article h3 {
+  color: var(--ui-text-highlighted);
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+.typst-article h1:first-child,
+.typst-article h2:first-child,
+.typst-article h3:first-child {
+  margin-top: 0;
+}
+.typst-article p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.typst-article ul,
+.typst-article ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+.typst-article li {
+  margin: 0.25em 0;
+}
+.typst-article pre {
+  background: var(--ui-bg-elevated);
+  border-radius: 0.5rem;
+  padding: 1em;
+  overflow-x: auto;
+  font-size: 0.875em;
+}
+.typst-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+.typst-article th,
+.typst-article td {
+  border: 1px solid var(--ui-border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.typst-article thead th {
+  background: var(--ui-bg-elevated);
+}
+.typst-article figure {
+  margin: 1.5em 0;
+}
+.typst-article figcaption {
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: var(--ui-text-muted);
+  text-align: center;
+}
+.typst-article img,
+.typst-article svg {
+  max-width: 100%;
+  height: auto;
+}
+.typst-article .typst-math {
+  color: inherit;
+}
+.typst-article .typst-math-svg {
+  max-width: 100%;
+}
+.typst-article .callout {
+  margin: 1.5em 0;
+  padding: 0.875em 1em;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  font-size: 0.9em;
+}
+.typst-article .callout-note {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: #3b82f6;
+}
+.typst-article .callout-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: #f59e0b;
+}
+.typst-article .callout-tip {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+}
+.typst-article .callout-important {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+.typst-article .citation a {
+  color: var(--ui-primary);
+  text-decoration: none;
+  padding-left: 1px;
+}
+.typst-article .citation a:hover {
+  text-decoration: underline;
+}
+.typst-article .citation-broken {
+  color: var(--ui-text-dimmed);
+}
+.typst-article .references {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--ui-border);
+}
+.typst-article .references h3 {
+  margin-top: 0;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ui-text-muted);
+}
+.typst-article .references ol {
+  padding-left: 1.5em;
+  font-size: 0.9em;
+  color: var(--ui-text-muted);
+}
+.typst-article .references a {
+  color: var(--ui-primary);
+}
+
+/* Page-to-page transition (see app.pageTransition in nuxt.config.ts). */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
+}

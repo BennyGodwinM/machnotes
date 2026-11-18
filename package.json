@@ -1,0 +1,20 @@
+{
+  "name": "machnotes",
+  "private": true,
+  "type": "module",
+  "description": "MachNotes: a static aerospace engineering notes site. Articles are hand-built HTML/CSS pages written from Overleaf sources, with Penrose diagrams rendered at build time.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:drafts": "node scripts/build.mjs --drafts --base=/",
+    "new": "node scripts/new-article.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "@penrose/core": "^3.3.1",
+    "jsdom": "^26.1.0"
+  }
+}

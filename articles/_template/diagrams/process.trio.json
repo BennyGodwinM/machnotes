@@ -1,0 +1,7 @@
+{
+  "title": "Design cycle with the sizing step highlighted",
+  "substance": "process.substance",
+  "style": "../../../diagrams/lib/flow.style",
+  "domain": "../../../diagrams/lib/flow.domain",
+  "variation": "MachFlow1"
+}

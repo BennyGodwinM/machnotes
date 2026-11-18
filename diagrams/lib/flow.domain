@@ -1,0 +1,8 @@
+-- MachNotes flow library: process steps, decisions and the arrows between them.
+-- Use for design cycles, analysis pipelines, test flows.
+type Step
+type Decision <: Step
+
+predicate Flows(Step a, Step b)
+predicate LoopsBack(Step a, Step b)
+predicate Highlighted(Step s)

@@ -1,0 +1,6 @@
+/* Article-specific styling. Override base tokens here to give this note its
+   own look, e.g. a different accent or a wider measure. */
+:root {
+  --mn-primary: #00dc82;
+}
+.lede { font-size: 1.2rem; color: var(--mn-text-muted); }

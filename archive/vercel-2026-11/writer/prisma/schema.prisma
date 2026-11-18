@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// No local User model: authentication is Neon Auth (Managed Better Auth),
+// which keeps its own users/sessions in the `neon_auth` schema on this
+// branch. See src/lib/auth/server.ts.
+
+model Category {
+  id            String     @id @default(cuid())
+  name          String
+  slug          String     @unique
+  fullSlugPath  String     @unique
+  parentId      String?
+  parent        Category?  @relation("CategoryTree", fields: [parentId], references: [id], onDelete: Restrict)
+  children      Category[] @relation("CategoryTree")
+  articles      Article[]
+  resources     Resource[]
+  order         Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Article {
+  id           String        @id @default(cuid())
+  title        String
+  slug         String        @unique
+  typstSource  String
+  compiledHtml String?
+  excerpt      String?
+  status       ArticleStatus @default(DRAFT)
+  categoryId   String
+  category     Category      @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  media        Media[]
+  resources    Resource[]
+  revisions    ArticleRevision[]
+  publishedAt  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Added via raw SQL in the init migration; read/written only through
+  // $queryRaw/$executeRaw since Prisma can't generate values for Unsupported fields.
+  searchVector Unsupported("tsvector")? @map("search_vector")
+
+  @@index([status, publishedAt])
+  @@index([categoryId])
+}
+
+// Snapshot of an article's content taken just before each content-changing
+// save (see PATCH /api/articles/[id]), so an author can review or restore
+// an earlier version. Pruned to the most recent N per article — see
+// MAX_REVISIONS in that route.
+model ArticleRevision {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  title       String
+  typstSource String
+  excerpt     String?
+  createdAt   DateTime @default(now())
+
+  @@index([articleId, createdAt])
+}
+
+// Singleton row (id is always "singleton") holding site-wide settings the
+// public app reads for its metadata.
+model Settings {
+  id          String @id @default("singleton")
+  siteTitle   String @default("MachNotes")
+  siteDescription String @default("Notes on aerospace engineering.")
+}
+
+// Private research/reference material (links, notes) the writer wants
+// attached to an article or category while drafting — never exposed to the
+// public app (not part of its mirrored schema).
+model Resource {
+  id           String    @id @default(cuid())
+  title        String
+  url          String?
+  notes        String?
+  // Uploaded file, stored on local disk for now (see src/lib/resource-storage.ts) —
+  // move to real object storage before deploying to a serverless host.
+  fileName     String?
+  fileMimeType String?
+  fileSize     Int?
+  articleId  String?
+  article    Article?  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([articleId])
+  @@index([categoryId])
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  url       String
+  filename  String
+  mimeType  String
+  width     Int?
+  height    Int?
+  articleId String?
+  article   Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+}

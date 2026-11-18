@@ -1,0 +1,76 @@
+-- MachNotes flow style: dark canvas palette matching assets/base.css.
+canvas {
+  width = 1200
+  height = 400
+}
+
+colors {
+  color ink = #f8fafc
+  color muted = #94a3b8
+  color edge = #64748b
+  color panel = #121212
+  color primary = #00dc82
+  color primarySoft = rgba(0.0, 0.86, 0.51, 0.14)
+  color amber = #f59e0b
+}
+
+forall Step s {
+  s.text = Text {
+    string: s.label
+    fillColor: colors.ink
+    fontFamily: "Public Sans, sans-serif"
+    fontSize: "15px"
+  }
+  s.box = Rectangle {
+    width: s.text.width + 36
+    height: s.text.height + 26
+    fillColor: colors.panel
+    strokeColor: colors.edge
+    strokeWidth: 1.25
+    cornerRadius: 10
+  }
+  ensure contains(s.box, s.text, 6)
+  s.text above s.box
+  s.text.center = s.box.center
+}
+
+forall Decision d {
+  override d.box.strokeColor = colors.amber
+  override d.box.cornerRadius = 22
+}
+
+forall Step s where Highlighted(s) {
+  override s.box.fillColor = colors.primarySoft
+  override s.box.strokeColor = colors.primary
+  override s.box.strokeWidth = 2
+}
+
+forall Step a; Step b {
+  ensure disjoint(a.box, b.box, 28)
+}
+
+forall Step a; Step b where Flows(a, b) {
+  ensure lessThan(a.box.center[0] + a.box.width / 2 + 40, b.box.center[0] - b.box.width / 2)
+  ensure lessThan(b.box.center[0] - b.box.width / 2, a.box.center[0] + a.box.width / 2 + 56)
+  ensure equal(a.box.center[1], b.box.center[1])
+  arrow = Line {
+    start: (a.box.center[0] + a.box.width / 2 + 4, a.box.center[1])
+    end: (b.box.center[0] - b.box.width / 2 - 4, b.box.center[1])
+    strokeColor: colors.edge
+    strokeWidth: 1.5
+    endArrowhead: "straight"
+    endArrowheadSize: 0.8
+  }
+}
+
+forall Step a; Step b where LoopsBack(a, b) {
+  y = a.box.center[1] + a.box.height / 2 + 34
+  back = Path {
+    d: pathFromPoints("open", [(a.box.center[0], a.box.center[1] + a.box.height / 2 + 4), (a.box.center[0], y), (b.box.center[0], y), (b.box.center[0], b.box.center[1] + b.box.height / 2 + 4)])
+    strokeColor: colors.amber
+    strokeWidth: 1.5
+    strokeDasharray: "5 4"
+    endArrowhead: "straight"
+    endArrowheadSize: 0.8
+  }
+}
