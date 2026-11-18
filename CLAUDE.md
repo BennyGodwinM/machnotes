@@ -22,5 +22,6 @@ Static aerospace notes site on GitHub Pages. Read README.md for the layout.
 - Use the page markers (`<!-- @head -->`, `<!-- @header -->`, `<!-- @footer -->`, optionally
   `<!-- @byline -->`, `<!-- @penrose ... -->`) so pages keep the site chrome.
 - `meta.json` `status` must be `published` for an article to go live.
+- Topics with no published notes never appear anywhere on the site (home, topics, map, pages).
 - Verify before pushing: `npm run build:drafts`, serve, and look at the page.
 - `archive/` is reference only; never deploy it. Never commit secrets.

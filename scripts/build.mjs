@@ -64,7 +64,7 @@ async function loadArticles() {
     cat.articles.push(article);
     list.push(article);
   }
-  return list.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  return list.sort((a, b) => String(b.date).localeCompare(String(a.date)) || (a.order ?? 0) - (b.order ?? 0));
 }
 
 async function walk(dir) {
@@ -138,11 +138,12 @@ for (const a of articles) await buildArticle(a);
 const card = (a) => T.articleCard(site, a, ancestors(a.cat));
 await page("", T.home(site, { articles, topLevel, card, subtreeArticles }));
 await page("topics", T.topics(site, { topLevel, subtreeArticles }));
-for (const cat of categories.values()) {
+// Only topics that contain notes get a page (empty topics never appear on the site).
+for (const cat of [...categories.values()].filter((c) => subtreeArticles(c).length > 0)) {
   await page(`topics/${cat.path}`, T.category(site, { cat, crumbs: ancestors(cat), articles: subtreeArticles(cat), card, subtreeArticles }));
 }
 const graph = {
-  categories: [...categories.values()].map((c) => ({ id: c.path, name: c.name, parent: c.parent?.path ?? null, count: subtreeArticles(c).length })),
+  categories: [...categories.values()].filter((c) => subtreeArticles(c).length > 0).map((c) => ({ id: c.path, name: c.name, parent: c.parent?.path ?? null, count: subtreeArticles(c).length })),
   articles: articles.map((a) => ({ id: a.slug, title: a.title, category: a.cat.path, url: a.url }))
 };
 await page("map", T.map(site, graph));

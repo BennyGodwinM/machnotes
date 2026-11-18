@@ -78,11 +78,11 @@ export const articleCard = (site, a, crumbs) => `<a class="mn-card" href="${a.ur
 
 export function home(site, { articles, topLevel, card, subtreeArticles }) {
   const [featured, ...rest] = articles;
+  // Topics with no notes are never shown.
   const topicTiles = topLevel
-    .map((c) => {
-      const n = subtreeArticles(c).length;
-      return `<a class="mn-topic${n ? "" : " is-empty"}" href="${site.base}topics/${c.path}/"><span>${esc(c.name)}</span><small>${n ? `${n} note${n > 1 ? "s" : ""}` : "—"}</small></a>`;
-    })
+    .map((c) => [c, subtreeArticles(c).length])
+    .filter(([, n]) => n > 0)
+    .map(([c, n]) => `<a class="mn-topic" href="${site.base}topics/${c.path}/"><span>${esc(c.name)}</span><small>${n} note${n > 1 ? "s" : ""}</small></a>`)
     .join("");
   return shell(
     site,
@@ -100,34 +100,34 @@ export function home(site, { articles, topLevel, card, subtreeArticles }) {
       : `<p class="mn-empty">Nothing published yet.</p>`
   }
 </section>
-<section class="mn-wrap mn-section">
+${topicTiles ? `<section class="mn-wrap mn-section">
   <h2 class="mn-h2">Topics</h2>
   <div class="mn-topics">${topicTiles}</div>
-</section>`
+</section>` : ""}`
   );
 }
 
 export function topics(site, { topLevel, subtreeArticles }) {
-  const tree = (nodes) =>
-    `<ul>${nodes
-      .map((c) => {
-        const n = subtreeArticles(c).length;
-        return `<li><a href="${site.base}topics/${c.path}/" class="${n ? "" : "is-empty"}">${esc(c.name)}${n ? ` <small>${n}</small>` : ""}</a>${c.children.length ? tree(c.children) : ""}</li>`;
-      })
-      .join("")}</ul>`;
+  const tree = (nodes) => {
+    const items = nodes
+      .map((c) => [c, subtreeArticles(c).length])
+      .filter(([, n]) => n > 0)
+      .map(([c, n]) => `<li><a href="${site.base}topics/${c.path}/">${esc(c.name)} <small>${n}</small></a>${tree(c.children)}</li>`)
+      .join("");
+    return items ? `<ul>${items}</ul>` : "";
+  };
   return shell(
     site,
     { title: "Topics" },
-    `<div class="mn-wrap mn-section"><h1 class="mn-title">Topics</h1><div class="mn-tree">${tree(topLevel)}</div></div>`
+    `<div class="mn-wrap mn-section"><h1 class="mn-title">Topics</h1>${tree(topLevel) ? `<div class="mn-tree">${tree(topLevel)}</div>` : `<p class="mn-empty">Nothing published yet.</p>`}</div>`
   );
 }
 
 export function category(site, { cat, crumbs, articles, card, subtreeArticles }) {
   const kids = cat.children
-    .map((c) => {
-      const n = subtreeArticles(c).length;
-      return `<a class="mn-chip-link${n ? "" : " is-empty"}" href="${site.base}topics/${c.path}/">${esc(c.name)}${n ? ` <small>${n}</small>` : ""}</a>`;
-    })
+    .map((c) => [c, subtreeArticles(c).length])
+    .filter(([, n]) => n > 0)
+    .map(([c, n]) => `<a class="mn-chip-link" href="${site.base}topics/${c.path}/">${esc(c.name)} <small>${n}</small></a>`)
     .join("");
   return shell(
     site,
@@ -146,7 +146,7 @@ export const map = (site, graph) =>
     site,
     { title: "Map" },
     `<div class="mn-map-wrap">
-  <div class="mn-map-legend"><span><i style="background:var(--mn-blue)"></i>Topic</span><span><i style="background:var(--mn-green)"></i>Note</span><label><input type="checkbox" id="mn-show-empty"> Show empty topics</label></div>
+  <div class="mn-map-legend"><span><i style="background:var(--mn-blue)"></i>Topic</span><span><i style="background:var(--mn-green)"></i>Note</span></div>
   <canvas id="mn-map" aria-label="Map of topics and notes"></canvas>
 </div>
 <script type="application/json" id="mn-graph">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>

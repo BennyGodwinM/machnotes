@@ -1,7 +1,0 @@
-{
-  "title": "Sizing loop with the propulsion model highlighted",
-  "substance": "process.substance",
-  "style": "../../../diagrams/lib/flow.style",
-  "domain": "../../../diagrams/lib/flow.domain",
-  "variation": "MachFlow1"
-}

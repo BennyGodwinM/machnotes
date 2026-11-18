@@ -99,13 +99,10 @@ code, pre, kbd { font-family: var(--mn-mono); font-size: 0.9em; }
 .mn-topic { display: flex; justify-content: space-between; align-items: baseline; padding: 0.9rem 1.1rem; border-radius: var(--mn-radius); border: 1px solid var(--mn-border); background: var(--mn-bg-muted); color: var(--mn-text-strong); font-weight: 500; }
 .mn-topic small { color: var(--mn-primary); font-weight: 400; }
 .mn-topic:hover { text-decoration: none; border-color: var(--mn-primary); }
-.mn-topic.is-empty { color: var(--mn-text-muted); }
-.mn-topic.is-empty small { color: var(--mn-text-dim); }
 
 .mn-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0.5rem; }
 .mn-chip-link { padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--mn-bg-accented); color: var(--mn-text-strong); font-size: 0.875rem; }
 .mn-chip-link small { color: var(--mn-primary); }
-.mn-chip-link.is-empty { color: var(--mn-text-dim); }
 .mn-chip-link:hover { text-decoration: none; background: var(--mn-border); }
 
 .mn-tree ul { list-style: none; margin: 0; padding-left: 1.25rem; border-left: 1px solid var(--mn-border); }
@@ -114,7 +111,6 @@ code, pre, kbd { font-family: var(--mn-mono); font-size: 0.9em; }
 .mn-tree > ul > li > a { color: var(--mn-text-strong); font-weight: 600; font-size: 1.05rem; }
 .mn-tree a { color: var(--mn-text); line-height: 1.9; }
 .mn-tree a small { color: var(--mn-primary); margin-left: 0.25rem; }
-.mn-tree a.is-empty { color: var(--mn-text-dim); }
 
 .mn-input { width: 100%; padding: 0.75rem 1rem; border-radius: var(--mn-radius); border: 1px solid var(--mn-border); background: var(--mn-bg-muted); color: var(--mn-text-strong); font: inherit; }
 .mn-input:focus { outline: 2px solid var(--mn-primary); outline-offset: 1px; }

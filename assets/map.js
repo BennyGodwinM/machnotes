@@ -7,28 +7,23 @@ import { zoom, zoomIdentity } from "https://cdn.jsdelivr.net/npm/d3-zoom@3/+esm"
 
 const data = JSON.parse(document.getElementById("mn-graph").textContent);
 const canvas = document.getElementById("mn-map");
-const toggle = document.getElementById("mn-show-empty");
 const ctx = canvas.getContext("2d");
 const css = getComputedStyle(document.documentElement);
 const COLOR = { root: "#ffffff", category: css.getPropertyValue("--mn-blue").trim(), article: css.getPropertyValue("--mn-green").trim() };
 const BASE_R = { root: 16, category: 9, article: 7 };
 const RING = 85;
 
-// With nothing published the map would be one dot, so empty topics are shown
-// (dimmed) until there is content; after that they're opt-in.
-const hasContent = data.articles.length > 0;
-toggle.checked = !hasContent;
+// The build only includes topics that contain notes, so every node here has content.
 let teardown = null;
 
-function build(showEmpty) {
+function build() {
   const nodes = [{ id: "root", label: "MachNotes", kind: "root", depth: 0 }];
   const links = [];
   const depth = new Map();
   const byId = new Map(data.categories.map((c) => [c.id, c]));
   const d = (id) => depth.get(id) ?? (depth.set(id, byId.get(id).parent ? d(byId.get(id).parent) + 1 : 1), depth.get(id));
   for (const c of data.categories) {
-    if (!showEmpty && c.count === 0) continue;
-    nodes.push({ id: `c:${c.id}`, label: c.name, kind: "category", depth: d(c.id), empty: c.count === 0 });
+    nodes.push({ id: `c:${c.id}`, label: c.name, kind: "category", depth: d(c.id) });
     links.push({ source: c.parent ? `c:${c.parent}` : "root", target: `c:${c.id}` });
   }
   for (const a of data.articles) {
@@ -40,7 +35,7 @@ function build(showEmpty) {
 
 function setup() {
   teardown?.();
-  const { nodes, links } = build(toggle.checked);
+  const { nodes, links } = build();
   const parent = canvas.parentElement;
   let width = parent.clientWidth, height = parent.clientHeight;
   let transform = zoomIdentity, hovered = null, dragging = null, downAt = null, moved = false, pan = null;
@@ -88,7 +83,7 @@ function setup() {
       if (n.x == null) continue;
       const dim = hi ? !hi.has(n.id) : false;
       const isHover = n.id === hovered;
-      ctx.globalAlpha = dim ? 0.2 : n.empty ? 0.45 : 1;
+      ctx.globalAlpha = dim ? 0.2 : 1;
       ctx.fillStyle = COLOR[n.kind];
       ctx.beginPath(); ctx.arc(n.x, n.y, isHover ? n.r + 2 : n.r, 0, Math.PI * 2); ctx.fill();
       if (isHover) { ctx.lineWidth = 2 / transform.k; ctx.strokeStyle = "#fff"; ctx.stroke(); }
@@ -144,5 +139,4 @@ function setup() {
   teardown = () => { sim.stop(); ro.disconnect(); canvas.removeEventListener("pointerdown", down); canvas.removeEventListener("pointermove", move); canvas.removeEventListener("pointerup", up); };
 }
 
-toggle.addEventListener("change", setup);
 setup();
